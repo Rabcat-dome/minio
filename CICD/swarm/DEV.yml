@@ -5,11 +5,11 @@ services:
       - "29000:9000" #S3 API
       - "29001:29001" #Console UI
     environment:
-      - MINIO_ROOT_USER=minioadmin
-      - MINIO_ROOT_PASSWORD=minioadmin
+      - MINIO_ROOT_USER=admin
+      - MINIO_ROOT_PASSWORD=Gumon#2024
     volumes:
-      - minio_data:/data
-      - minio_config:/root/.minio
+      - minio-data:/data
+      - minio-config:/root/.minio
     command: server /data --console-address ":29001"
     deploy:
       placement:
@@ -18,15 +18,21 @@ services:
       replicas: 1
       restart_policy:
         condition: on-failure
+    networks:
+      - minio-network
+
+networks:
+  minio-network:
+    driver: bridge
 
 volumes:
-  minio_data:
+  minio-data:
     driver: local
     driver_opts:
       type: none
       o: bind
       device: /media/psf/NFS/minio_data
-  minio_config:
+  minio-config:
     driver: local
     driver_opts:
       type: none
