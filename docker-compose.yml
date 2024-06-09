@@ -1,6 +1,6 @@
 services:
   minio:
-    image: minio/minio:minio/minio:RELEASE.2024-06-06T09-36-42Z-cpuv1
+    image: minio/minio:RELEASE.2024-06-06T09-36-42Z-cpuv1
     ports:
       - "29000:9000" #S3 API
       - "29001:9001" #Console UI
