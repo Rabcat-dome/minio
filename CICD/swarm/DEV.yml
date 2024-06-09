@@ -23,7 +23,7 @@ services:
 
 networks:
   minio-network:
-    driver: bridge
+    driver: overlay
 
 volumes:
   minio-data:
