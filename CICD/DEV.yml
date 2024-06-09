@@ -8,8 +8,8 @@ services:
       - MINIO_ROOT_USER=admin
       - MINIO_ROOT_PASSWORD=Gumon#2024
     volumes:
-      - minio_data:/data
-      - minio_config:/root/.minio
+      - minio-data:/data
+      - minio-config:/root/.minio
     command: server /data --console-address ":29001"
     deploy:
       placement:
@@ -26,7 +26,7 @@ networks:
     driver: bridge
 
 volumes:
-  minio_data:
+  minio-data:
     driver: local
-  minio_config:
+  minio-config:
     driver: local
