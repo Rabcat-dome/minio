@@ -11,13 +11,7 @@ services:
       - minio-data:/data
       - minio-config:/root/.minio
     command: server /data --console-address ":29001"
-    deploy:
-      placement:
-        constraints:
-          - node.role == manager
-      replicas: 1
-      restart_policy:
-        condition: on-failure
+    restart: always
     networks:
       - minio-network
 
